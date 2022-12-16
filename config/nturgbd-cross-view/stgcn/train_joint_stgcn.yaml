@@ -3,8 +3,9 @@ model_saved_name: ./runs/stbln/ntu_cv_stgcn_joint
 # feeder
 feeder: feeders.feeder.Feeder
 train_feeder_args:
-  data_path: ../../data/ntu/xview/train_data_joint.npy
-  label_path: ../../data/ntu/xview/train_label.pkl
+  data_path: /content/skeleton-based-action-recognition/data_coup/x_test.npy
+  label_path: /content/skeleton-based-action-recognition/data_coup/test_label.pkl
+  
   debug: False
   random_choose: False
   random_shift: False
@@ -19,9 +20,9 @@ test_feeder_args:
 # model
 model: model.stgcn.STGCN
 model_args:
-  num_class: 60
+  num_class: 2
   num_point: 25
-  num_person: 2
+  num_person: 1
   graph: graph.ntu_rgb_d.Graph
   graph_args:
     labeling_mode: 'spatial'
@@ -32,7 +33,7 @@ base_lr: 0.1
 step: [30, 40]
 
 # training
-device: [0,1,2,3]
+device: [0]
 batch_size: 64
 test_batch_size: 128
 num_epoch: 50
