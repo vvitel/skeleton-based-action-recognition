@@ -3,8 +3,8 @@ model_saved_name: ./runs/stbln/ntu_cv_stgcn_joint
 # feeder
 feeder: feeders.feeder.Feeder
 train_feeder_args:
-  data_path: /content/skeleton-based-action-recognition/data_coup/x_test.npy
-  label_path: /content/skeleton-based-action-recognition/data_coup/test_label.pkl
+  data_path: /content/skeleton-based-action-recognition/data_coup/x_train.npy
+  label_path: /content/skeleton-based-action-recognition/data_coup/train_label.pkl
   
   debug: False
   random_choose: False
@@ -14,8 +14,8 @@ train_feeder_args:
   normalization: False
 
 test_feeder_args:
-  data_path: ../../data/ntu/xview/val_data_joint.npy
-  label_path: ../../data/ntu/xview/val_label.pkl
+  data_path: /content/skeleton-based-action-recognition/data_coup/x_test.npy
+  label_path: /content/skeleton-based-action-recognition/data_coup/test_label.pkl
 
 # model
 model: model.stgcn.STGCN
