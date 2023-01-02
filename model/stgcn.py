@@ -112,7 +112,7 @@ class ST_GCN_block(nn.Module):
 
 
 class STGCN(nn.Module):
-    def __init__(self, num_class=60, num_point=25, num_person=2, graph=None, graph_args=dict(), in_channels=3,
+    def __init__(self, num_class=2, num_point=25, num_person=1, graph=None, graph_args=dict(), in_channels=3,
                  cuda_=True):
         super(STGCN, self).__init__()
 
