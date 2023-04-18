@@ -18,9 +18,9 @@ test_feeder_args:
 # model
 model: model.stgcn.STGCN
 model_args:
-  num_class: 400
+  num_class: 2
   num_person: 2
-  num_point: 18
+  num_point: 15
   graph: graph.kinetics.Graph
   graph_args:
     labeling_mode: 'spatial'
