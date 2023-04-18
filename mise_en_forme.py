@@ -15,14 +15,15 @@ with open('/content/skeleton-based-action-recognition/data_coup/train_label.pkl'
 test_label = (([str(i) for i in list(range(len(y_test)))], y_test))
 with open('/content/skeleton-based-action-recognition/data_coup/test_label.pkl', 'wb') as handle:
     pickle.dump(test_label, handle, protocol=pickle.HIGHEST_PROTOCOL)
-    
+
+x_train = x_train[:, :, :, :, :3]
+x_test = x_test[:, :, :, :, :3]
+
 b, c, d, e = x_train.shape[1], x_train.shape[2], x_train.shape[3], x_train.shape[4]
 
 x_train = np.reshape(x_train, (len(x_train), e, c, d, b))
-x_train = x_train[:, :, :, :, :3]
-
 x_test = np.reshape(x_test, (len(x_test), e, c, d, b))
-x_test = x_test[:, :, :, :, :3]
+
 
 np.save('/content/skeleton-based-action-recognition/data_coup/x_train.npy', x_train)
 np.save('/content/skeleton-based-action-recognition/data_coup/x_test.npy', x_test)
