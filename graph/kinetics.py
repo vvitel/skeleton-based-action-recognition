@@ -5,7 +5,7 @@ sys.path.extend(['../'])
 from graph import tools
 
 # Joint index:
-# {0,  "Nose"}
+# {0,  "Nose"},
 # {1,  "Neck"},
 # {2,  "RShoulder"},
 # {3,  "RElbow"},
@@ -13,23 +13,19 @@ from graph import tools
 # {5,  "LShoulder"},
 # {6,  "LElbow"},
 # {7,  "LWrist"},
-# {8,  "RHip"},
-# {9,  "RKnee"},
-# {10, "RAnkle"},
-# {11, "LHip"},
-# {12, "LKnee"},
-# {13, "LAnkle"},
-# {14, "REye"},
-# {15, "LEye"},
-# {16, "REar"},
-# {17, "LEar"},
+# {8,  "MidHip"},
+# {9,  "RHip"},
+# {10, "RKnee"},
+# {11, "RAnkle"},
+# {12, "LHip"},
+# {13, "LKnee"},
+# {14, "LAnkle"},
 
 # Edge format: (origin, neighbor)
-num_node = 18
+num_node = 15
 self_link = [(i, i) for i in range(num_node)]
-inward = [(4, 3), (3, 2), (7, 6), (6, 5), (13, 12), (12, 11), (10, 9), (9, 8),
-          (11, 5), (8, 2), (5, 1), (2, 1), (0, 1), (15, 0), (14, 0), (17, 15),
-          (16, 14)]
+inward = [(0, 1), (1, 2), (1, 5), (1, 8), (2, 3), (3, 4), (5, 6), (6, 7), 
+          (8, 9), (8, 12), (9, 10), (10, 11), (12, 13), (13, 14)]
 outward = [(j, i) for (i, j) in inward]
 neighbor = inward + outward
 
