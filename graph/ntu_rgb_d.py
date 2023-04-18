@@ -3,12 +3,11 @@ import sys
 sys.path.extend(['../'])
 from graph import tools
 
-num_node = 25
+num_node = 15
 self_link = [(i, i) for i in range(num_node)]
-inward_ori_index = [(0, 1), (0, 15), (0, 16), (1, 2), (1, 5), (1, 8), (2, 3), (3, 4), 
-                    (5,6), (6, 7), (8, 9), (8, 12), (9, 10), (10, 11), (11, 24), 
-                    (11, 22), (12, 13), (13, 14), (14, 19), (14, 21), (15, 17), 
-                    (16, 18), (19, 20), (22, 23)]
+inward_ori_index = [(0, 1), (1, 2), (1, 5), (1, 8), (2, 3), (3, 4), (5, 6), (6, 7), 
+                    (8, 9), (8, 12), (9, 10), (10, 11), (12, 13), (13, 14)]
+
 inward = [(i - 1, j - 1) for (i, j) in inward_ori_index]
 outward = [(j, i) for (i, j) in inward]
 neighbor = inward + outward
