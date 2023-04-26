@@ -112,7 +112,7 @@ class ST_GCN_block(nn.Module):
 
 
 class STGCN(nn.Module):
-    def __init__(self, num_class=2, num_point=25, num_person=1, graph=None, graph_args=dict(), in_channels=3,
+    def __init__(self, num_class=60, num_point=25, num_person=2, graph=None, graph_args=dict(), in_channels=3,
                  cuda_=True):
         super(STGCN, self).__init__()
 
@@ -140,9 +140,7 @@ class STGCN(nn.Module):
         )
         
         self.fc = nn.Linear(256, num_class)
-        self.softmax = nn.Softmax() #modifié
-        
-        weights_init(self.softmax, bs=num_class) #modifié
+        weights_init(self.fc, bs=num_class)
 
     def forward(self, x):
         N, C, T, V, M = x.size()
@@ -155,4 +153,4 @@ class STGCN(nn.Module):
         c_new = x.size(1)
         x = x.view(N, M, c_new, -1)
         x = x.mean(3).mean(1)
-        return self.softmax(x) #modifié
+        return self.fc(x)
