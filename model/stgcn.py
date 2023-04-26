@@ -156,4 +156,4 @@ class STGCN(nn.Module):
         c_new = x.size(1)
         x = x.view(N, M, c_new, -1)
         x = x.mean(3).mean(1)
-        return self.fc(x)
+        return self.softmax(x)
