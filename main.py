@@ -459,7 +459,7 @@ class Processor():
                     score_frag.append(output.data.cpu().numpy())
                     loss_value.append(loss.data.item())
 
-                    _, predict_label = torch.max(output.data, 1)
+                    predict_label = output.data #modif
                     step += 1
                     lbls.append(label.data.cpu().numpy())
                     preds.append(predict_label.data.cpu().numpy())
