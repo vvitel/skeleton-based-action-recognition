@@ -458,7 +458,7 @@ class Processor():
                     score_frag.append(output.data.cpu().numpy())
                     loss_value.append(loss.data.item())
 
-                    _, predict_label = torch.max(output.data, 1)
+                    predict_label, _ = torch.max(output.data, 1)
                     step += 1
                     lbls.append(label.data.cpu().numpy())
                     preds.append(predict_label.data.cpu().numpy())
@@ -651,7 +651,7 @@ if __name__ == '__main__':
     p = parser.parse_args()
     if p.config is not None:
         with open(p.config, 'r') as f:
-            default_arg = yaml.load(f)
+            default_arg = yaml.full_load(f)
         key = vars(p).keys()
         for k in default_arg.keys():
             if k not in key:
