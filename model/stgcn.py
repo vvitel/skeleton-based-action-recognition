@@ -140,6 +140,7 @@ class STGCN(nn.Module):
         )
         
         self.fc = nn.Linear(256, num_class)
+        self.sm = nn.Softmax(dim=1) #modifié
         weights_init(self.fc, bs=num_class)
 
     def forward(self, x):
@@ -153,4 +154,4 @@ class STGCN(nn.Module):
         c_new = x.size(1)
         x = x.view(N, M, c_new, -1)
         x = x.mean(3).mean(1)
-        return self.fc(x)
+        return self.sm(self.fc(x)) #modifié
