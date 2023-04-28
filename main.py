@@ -423,7 +423,7 @@ class Processor():
                            self.arg.model_saved_name + '-' + str(epoch) + '-' + str(int(self.global_step)) + '.pt')
         return loss, acc
 
-    def eval(self, epoch, save_score=False, loader_name=['test'], wrong_file=None, result_file=None):
+    def eval(self, epoch, save_score=True, loader_name=['test'], wrong_file=None, result_file=None):
         if wrong_file is not None:
             f_w = open(wrong_file, 'w')
         if result_file is not None:
@@ -457,8 +457,9 @@ class Processor():
                     loss = self.loss(output, label)
                     score_frag.append(output.data.cpu().numpy())
                     loss_value.append(loss.data.item())
-
-                    predict_label = output.data[:,1] #modifié
+                    
+                    _, predict_label = torch.max(output.data, 1)
+                    #predict_label = output.data[:,1] #modifié
                     #predict_label = torch.softmax(predict_label, dim=0) #modifié
                     step += 1
                     lbls.append(label.data.cpu().numpy())
